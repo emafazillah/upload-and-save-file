@@ -64,7 +64,15 @@ public class Testcasetxn2FacadeREST extends AbstractFacade<Testcasetxn2> {
     @Override
     @Produces({"application/json"})
     public List<Testcasetxn2> findAll() {
-        return super.findAll();
+        //return super.findAll();
+        try {
+
+            javax.persistence.Query q = em.createQuery("SELECT t FROM Testcasetxn2 t ORDER BY t.weightage DESC, t.id");
+            return q.getResultList();
+
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     @GET
@@ -84,6 +92,23 @@ public class Testcasetxn2FacadeREST extends AbstractFacade<Testcasetxn2> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    @GET
+    @Path("/ordered")
+    @Produces({"application/json"})
+    public List<Testcasetxn2> findAllOrderByWeightage() {
+        /*
+        try{
+            
+            javax.persistence.Query q = em.createQuery("SELECT t FROM Testcasetxn2 t ORDER BY t.weightage DESC, t.id");
+            return q.getResultList();
+            
+        }catch(Exception ex){            
+            return null;
+        }
+        */
+        return super.findAll();
     }
     
 }

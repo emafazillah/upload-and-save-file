@@ -43,13 +43,13 @@ public class Testcasetxn2 implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Size(max = 100)
+    @Size(max = 1000)
     @Column(name = "tested_function")
     private String testedFunction;
-    @Size(max = 100)
+    @Size(max = 1000)
     @Column(name = "function_input")
     private String functionInput;
-    @Size(max = 100)
+    @Size(max = 1000)
     @Column(name = "function_expected_output")
     private String functionExpectedOutput;
     @Column(name = "weightage")
